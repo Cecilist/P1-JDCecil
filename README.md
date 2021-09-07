@@ -4,7 +4,9 @@ Created By: Jacob Cecil
 This project was assigned as Project 1 by Dr. Gestwicki for CS 315 Game Programming at Ball State University during the Fall 2021 semester. 
 
 ## Instructions:
-Space bar - Launch ball
+Goal: Get the ball to the flag.
+
+Hold Space bar to build power, and let go to launch.
 
 Up arrow - Increase angle of launch
 
@@ -12,11 +14,12 @@ Down arrow - Decrease angle of launch
 
 ## Project Report
 ### Iteration 1: 
-I was really excited to start this project! Looking ahead to what the final iteration is supposed to look like, I can see this project quickly becoming the kind of game I would play on some flash game site instead of paying attention in high school. Most of the necessary tools were demonstrated to us in class, so this first iteration wasn't to challenging. The only thing I had to figure out to meet all of the B requirements was clamping, which with Godot's built in clamp method, was eay to understand. The A requirements look to be where the real challenege lies. 
+I was really excited to start this project! Looking ahead to what the final iteration is supposed to look like, I can see this project quickly becoming the kind of game I would play on some flash game site instead of paying attention in high school. Most of the necessary tools were demonstrated to us in class, so this first iteration wasn't to challenging. The only thing I had to figure out to meet all of the B requirements was clamping. Luckily Godot's built-in clamp method was eay to understand. The A requirements were where a lot more trial and error took place. At the start, I had ideas to incorporate more visual elements to display power and angle, but alas my schedule was tight this week. I wanted to try and implement kind of meter to show power. For angle, I envisioned a simple arrow that would point in the angle the projectile would travel. One easy thing I hope to implement soon is putting a maximum on power.
+
 
 Self Evaluation: 
 
-I beleive I have met all requirents for an B
+I beleive I have met all requirents for an A
 - [x] D-1: The repository link is submitted to Canvas before the project deadline.
 - [x] D-2: The repository contains a <code>README.md</code> file in its top-level directory.
 - [x] D-3: The project content is eligible for an <a href="https://www.esrb.org/ratings-guide/">ESRB Rating</a> of M or less.
@@ -32,8 +35,11 @@ I beleive I have met all requirents for an B
 - [x] C-10: There is a non-ground target that the projectile can hit.
 - [x] B-1: The <code>README.md</code> file contains a personal reflection on the iteration and self-evaluation, as defined above.
 - [x] B-2: The projectile's firing angle is clamped between 0&deg; (straight forward) and 90&deg; (straight up).
-- [ ] A-1: The player can modify the strength of the projectile's firing.
-- [ ] A-2: There is a visual indicator showing the angle at which the projectile will fire.
-- [ ] A-3: The projectile's hitting the target is recognized and logged to the console or otherwise indicated.
+- [x] A-1: The player can modify the strength of the projectile's firing.
+- [x] A-2: There is a visual indicator showing the angle at which the projectile will fire.
+- [x] A-3: The projectile's hitting the target is recognized and logged to the console or otherwise indicated.
 ## Third Party Assets 
-All Assets, as of version 0.1.0, created by Kenney.nl (CC0 1.0 Universal) Source: https://www.kenney.nl/assets/physics-assets
+All fonts used are built into the Godot engine. 
+
+All other Assets, as of version 0.1.0, created by Kenney.nl (CC0 1.0 Universal) Source: https://www.kenney.nl/assets/physics-assets
+

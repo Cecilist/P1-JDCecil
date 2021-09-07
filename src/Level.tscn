@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/grass.png" type="Texture" id=2]
 [ext_resource path="res://src/block.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Level.gd" type="Script" id=5]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 71, 69, 1, 69, 1, 2, 71, 0 )
@@ -31,17 +33,33 @@ points = PoolVector2Array( 71, 69, 1, 69, 1, 2, 71, 0 )
 0/z_index = 0
 
 [node name="Level" type="Node2D"]
+script = ExtResource( 5 )
 
-[node name="Projectile" parent="." instance=ExtResource( 1 )]
-position = Vector2( 353.341, 204.07 )
+[node name="Projectile" parent="." groups=[
+"Player",
+] instance=ExtResource( 1 )]
+position = Vector2( 40.5394, 475.899 )
+mode = 0
+
+[node name="ProjectileHUD" type="Control" parent="Projectile"]
+margin_left = -46.341
+margin_top = -483.07
+margin_right = -6.341
+margin_bottom = -443.07
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Goal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 994.123, 415.082 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 65537, 0, 0, 65545, 0, 0, 131073, 0, 0, 131081, 0, 0, 196609, 0, 0, 196617, 0, 0, 262145, 0, 0, 262149, 0, 0, 262153, 0, 0, 327681, 0, 0, 327685, 0, 0, 327689, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0 )
+tile_data = PoolIntArray( 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0 )
 
-[node name="block6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 732, 277 )
+[node name="block1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 665.022, 276.838 )
 
 [node name="block2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 667, 346 )
@@ -49,11 +67,34 @@ position = Vector2( 667, 346 )
 [node name="block" parent="." instance=ExtResource( 3 )]
 position = Vector2( 667, 415 )
 
-[node name="block3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 736, 414 )
+[node name="YouWin" type="Label" parent="."]
+margin_left = 385.455
+margin_top = 2.52324
+margin_right = 496.455
+margin_bottom = 43.5232
+custom_colors/font_color = Color( 0.298039, 0.984314, 0.0784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="block4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 734, 345 )
+[node name="PowerDisplay" type="Label" parent="."]
+margin_left = 2.14145
+margin_top = 254.743
+margin_right = 73.1414
+margin_bottom = 298.743
+text = "Power:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="block5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 666, 278 )
+[node name="AngleDisplay" type="Label" parent="."]
+margin_left = 3.25363
+margin_top = 237.969
+margin_right = 43.2536
+margin_bottom = 251.969
+text = "Angle:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]
