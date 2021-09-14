@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Projectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/grass.png" type="Texture" id=2]
 [ext_resource path="res://src/block.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Level.gd" type="Script" id=5]
+[ext_resource path="res://assets/colored_grass.png" type="Texture" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 71, 69, 1, 69, 1, 2, 71, 0 )
@@ -32,23 +33,28 @@ points = PoolVector2Array( 71, 69, 1, 69, 1, 2, 71, 0 )
 } ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 590.816, 363.272 )
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = -7.0
+margin_top = -20.0
+margin_right = 1046.0
+margin_bottom = 607.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Projectile" parent="." groups=[
 "Player",
 ] instance=ExtResource( 1 )]
-position = Vector2( 40.5394, 475.899 )
+position = Vector2( 42.8785, 471.22 )
 mode = 0
-
-[node name="ProjectileHUD" type="Control" parent="Projectile"]
-margin_left = -46.341
-margin_top = -483.07
-margin_right = -6.341
-margin_bottom = -443.07
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 994.123, 415.082 )
@@ -77,7 +83,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AngleDisplay" type="Label" parent="."]
+modulate = Color( 0.984314, 0.0392157, 0.0392157, 1 )
+margin_left = 3.25363
+margin_top = 237.969
+margin_right = 43.2536
+margin_bottom = 251.969
+text = "Angle:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PowerDisplay" type="Label" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 2.14145
 margin_top = 254.743
 margin_right = 73.1414
@@ -87,14 +105,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AngleDisplay" type="Label" parent="."]
-margin_left = 3.25363
-margin_top = 237.969
-margin_right = 43.2536
-margin_bottom = 251.969
-text = "Angle:"
+[node name="In-bounds" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="In-bounds"]
+position = Vector2( 524.264, 305.889 )
+shape = SubResource( 3 )
+disabled = true
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
 
 [connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/565794__stomachache__distant-cannon-fire-simulated.wav-7f1d72e2edaf7db5da66b04d0b8f4965.sample"
+
+[deps]
+
+source_file="res://assets/565794__stomachache__distant-cannon-fire-simulated.wav"
+dest_files=[ "res://.import/565794__stomachache__distant-cannon-fire-simulated.wav-7f1d72e2edaf7db5da66b04d0b8f4965.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
