@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/alienPink_round.png" type="Texture" id=1]
 [ext_resource path="res://src/Projectile.gd" type="Script" id=2]
-[ext_resource path="res://assets/565794__stomachache__distant-cannon-fire-simulated.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 36.0
@@ -16,8 +15,7 @@ animations = [ {
 } ]
 
 [node name="Projectile" type="RigidBody2D"]
-position = Vector2( 77.3508, 496.596 )
-mode = 2
+position = Vector2( 6.60428, 6.70978 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -25,13 +23,18 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 4.00454, -3.33707 )
+scale = Vector2( 3.26923, 3.33597 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="launchSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-
-[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
