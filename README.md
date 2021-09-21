@@ -1,4 +1,4 @@
-# Project 1: Un-named 2D Physics-Based Game
+# Project 1: Un-named 2D Physics Game !!
 Created By: Jacob Cecil
 
 This project was assigned as Project 1 by Dr. Gestwicki for CS 315 Game Programming at Ball State University during the Fall 2021 semester. 
@@ -13,37 +13,43 @@ Up arrow - Increase angle of launch
 Down arrow - Decrease angle of launch
 
 ## Project Report
-### Iteration 1: 
-I was really excited to start this project! Looking ahead to what the final iteration is supposed to look like, I can see this project quickly becoming the kind of game I would play on some flash game site instead of paying attention in high school. Most of the necessary tools were demonstrated to us in class, so this first iteration wasn't to challenging. The only thing I had to figure out to meet all of the B requirements was clamping. Luckily Godot's built-in clamp method was eay to understand. The A requirements were where a lot more trial and error took place. At the start, I had ideas to incorporate more visual elements to display power and angle, but alas my schedule was tight this week. I wanted to try and implement kind of meter to show power. For angle, I envisioned a simple arrow that would point in the angle the projectile would travel. One easy thing I hope to implement soon is putting a maximum on power.
-
-### Iteration 2: 
-At the start of this iteration, I foolishly believed that this weeks tasks would be simple. I allready had 2D graphics, and adding a sound effect was easy enough. I found a sound on free sound, that is supposed to simulate the sound a far off cannon. The originated from a basketball which, since my projectile is just a weird alien ball thing, seemed appropriate. Instancing my projectile proved to be a difficult task, one which I was unable to complete in the given time period. My first idea to achieve this was attaching a visibility notifier to the projectile scene, and kill the current instance of projectile on the viewport_exited signal. Then, when the projectile node sent the exit_tree() signal, I attempted to create a new instance of projectile. This would work once, but my guess is the instance of projectile wasn't inheriting the exit_tree() signal the way I thought it would. I tried another method involving an Area2D covering the entire level that would use signals to "respawn" the projectile when the projectile exited the area, but that didnt pan out either. I'm hoping to remedy this by the end of iteration 3. I still hope to also add a maximum on power, show some kind of power "charging" animation, and some graphical indication of the angle of the projectile. 
+### Iteration 3
+I'm still tring to get my work school life in order, so this entire project has been rough.
+ I spent the bulk of my time for this iteration trying to instance my projectile. 
+ In the end, I ended up basing my level script off of the Demo provided by Dr. Gestwicki. 
+ After making that decision, I was able to move onto other areas that where in need of polishing. 
+ For the final iteration, I finally got arount to adding in fonts (or, I guess a font). 
+ I chose Grechen Fuemen from Google Fonts.
+ To me, something about this particular font seemed to just fit in the with rest of the art of the game. 
+ Iteration 3 also brought to life the title screen. 
+ I wasn't able to get around to adding in animations, which is the main reason I'm not aiming for the highest grade. 
 
 
 Self Evaluation: 
 
 I beleive I have met all requirents for a B
-- [x] D-1: The repository link is submitted to Canvas before the project deadline.
-- [x] D-2: The repository contains a <code>README.md</code> file in its top-level directory.
-- [x] D-3: The project content is eligible for an <a href="https://www.esrb.org/ratings-guide/">ESRB Rating</a> of M or less.
-- [x] C-1: Your repository is well-formed, with an appropriate <code>.gitignore</code> file and no unnecessary files tracked.
-- [x] C-2: Your release is tagged using <a href="https://semver.org/">semantic versioning</a> where the major version is zero, the minor version is the iteration number, and the patch version is incremented as usual for each change made to the minor version, and the release name matches the release tag.
-- [x] C-3: You have a clear legal right to use all incorporated assets, and the licenses for all third-party assets are tracked in the <code>README.md</code> file.
-- [x] C-4: The <code>README.md</code> contains instructions for how to play the game or such instructions are incorporated into the game itself.
-- [x] C-5: The project content is eligible for an <a href="https://www.esrb.org/ratings-guide/">ESRB Rating</a> of T or less.
-- [x] C-6: The projectile and targets are shown with 2D graphics.
-- [x] C-7: The game plays an appropriate sound effect when the projectile is fired.
-- [x] B-1: The <code>README.md</code> file contains a personal reflection on the iteration and self-evaluation, as defined above.
-- [x] B-2: Earn one star.
-- [ ] A-1: Earn three stars.
-- [ ] ⭐ The player has a small inventory of projectiles, and only one can be launched at a time.
-- [x] ⭐ The background and ground use 2D graphics.
-- [ ] ⭐ A <abbr title="Heads-Up Display">HUD</abbr> shows the current game state such as the score and number of projectiles remaining.
+- [X] D-1: The repository link is submitted to Canvas before the project deadline.
+- [X] D-2: The repository contains a <code>README.md</code> file in its top-level directory.
+- [X] D-3: The project content is eligible for an <a href="https://www.esrb.org/ratings-guide/">ESRB Rating</a> of M or less.
+- [X] C-1: Your repository is well-formed, with an appropriate <code>.gitignore</code> file and no unnecessary files tracked.
+- [X] C-2: Your release is tagged using <a href="https://semver.org/">semantic versioning</a> where the major version is zero, the minor version is the iteration number, and the patch version is incremented as usual for each change made to the minor version, and the release name matches the release tag.
+- [X] C-3: You have a clear legal right to use all incorporated assets, and the licenses for all third-party assets are tracked in the <code>README.md</code> file.
+- [X] C-4: The <code>README.md</code> contains instructions for how to play the game or such instructions are incorporated into the game itself.
+- [X] C-5: The project content is eligible for an <a href="https://www.esrb.org/ratings-guide/">ESRB Rating</a> of T or less.
+- [X] C-6: The game starts on a title screen. Interacting with the title screen moves the player into the gameplay screen.
+- [X] B-1: The <code>README.md</code> file contains a personal reflection on the iteration and self-evaluation, as defined above.
+- [X] B-2: Earn one star.
+- [X] A-1: Generate neither warnings nor errors at runtime.
+- [ ] A-2: Earn three stars.
+- [X] ⭐ When the game is over, the player can interact to take the game back to the title screen, from which the game can be played again.
+- [ ] ⭐ Use an <code>AnimationPlayer</code> or <code>Tween</code> to add some pop to the user-interface.
+- [ ] ⭐ The source code complies with our adopted style guide.
+
 
 ## Third Party Assets 
-All fonts used are built into the Godot engine. 
+Font used other than Godot's built in font was designed by Robert Leuschke and hosted on Google Fonts (Open Fonts License) Source: https://fonts.google.com/specimen/Grechen+Fuemen#about
 
 Launch sound effect uploaded by freesound.org user stomachache. (CC0 1.0 Universal) Source: https://freesound.org/people/stomachache/sounds/565794/
 
-All other Assets, as of version 0.2.0, created by Kenney.nl (CC0 1.0 Universal) Source: https://www.kenney.nl/assets/physics-assets
+All other Assets, as of version 0.3.0, created by Kenney.nl (CC0 1.0 Universal) Source: https://www.kenney.nl/assets/physics-assets
 
