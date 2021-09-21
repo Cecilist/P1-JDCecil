@@ -36,6 +36,7 @@ func _update_projectiles_remaining_label():
 
 func _process(delta):
 	if _state == GameState.INPUT:
+		$PowerDisplay.text = 'Power: %.2f' % (_timePressed / 10)
 		if Input.is_action_pressed("launch"):
 			_timePressed += delta * 150
 			$PowerDisplay.text = 'Power: %.2f' % (_timePressed / 10)
@@ -43,6 +44,7 @@ func _process(delta):
 			var impulse = Vector2.RIGHT.rotated(deg2rad(_angle)) * _timePressed
 			_projectile.apply_impulse(Vector2.ZERO, impulse)
 			_timePressed = 0
+			#$PowerDisplay.text = 'Power: 0'
 			$LaunchSound.play()
 			var _ignored := _projectile.connect("sleeping_state_changed", self, "_on_Projectile_sleep_state_changed")
 			_state = GameState.WAIT
@@ -50,6 +52,8 @@ func _process(delta):
 		var angle_change := _process_angle_change_input(delta)
 		_angle = clamp(_angle + angle_change, -90, 0)
 		$AngleDisplay.text = 'Angle: %.2f' % -_angle
+		
+
 
 
 func _process_angle_change_input(delta) -> float:
@@ -78,13 +82,14 @@ func _handle_end_of_shot() ->void:
 	else:
 		$ResultsDisplay.set_text("GAME OVER!")
 		_state = GameState.GAME_OVER
+		$ReturnToTitle.visible = true;
+		
 
 func _on_Goal_body_entered(body):
 	if body.is_in_group("Player"):
-		$ResultsDisplay.set_text("You win!")
+		$ResultsDisplay.set_text("YOU WIN!")
+		$ReturnToTitle.visible = true;
 
 
-
-
-	
-
+func _on_ReturnToTitle_pressed():
+	var _ignored := get_tree().change_scene("res://src/Title_Screen.tscn")
