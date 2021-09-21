@@ -19,6 +19,7 @@ func _spawn_Projectile()->void:
 	assert(_projectiles_remaining > 0, 'Only call this if there are balls remaining')
 	_projectile = preload("res://src/Projectile.tscn").instance()
 	_projectile.position = $Spawnpoint.position
+	_projectile.add_to_group("Player")
 	var _ignored := _projectile.connect("screen_exited", self, "_on_Projectile_screen_exited")
 	add_child(_projectile)
 	
@@ -30,8 +31,7 @@ func _spawn_Projectile()->void:
 
 
 func _update_projectiles_remaining_label():
-	pass
-	#$ProjectilesRemainingLabel.text = "Projectiles Remaining: %d" % _projectiles_remaining
+	$ProjectilesLeftDisplay.text = "Projectiles Remaining: %d" % _projectiles_remaining
 	
 
 func _process(delta):
@@ -76,12 +76,12 @@ func _handle_end_of_shot() ->void:
 	if _projectiles_remaining > 0:
 		call_deferred("_spawn_Projectile")
 	else:
-		#$GameOverLabel.visible = true
+		$ResultsDisplay.set_text("GAME OVER!")
 		_state = GameState.GAME_OVER
 
 func _on_Goal_body_entered(body):
 	if body.is_in_group("Player"):
-		$YouWin.set_text("You win!")
+		$ResultsDisplay.set_text("You win!")
 
 
 
